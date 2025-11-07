@@ -144,6 +144,8 @@ html,body{
   opacity:0;
   transform:translateY(50px);
   transition:all 0.8s ease;
+  text-decoration:none; /* empêche le soulignement du lien */
+  color:#fff;
 }
 .project-card.visible{opacity:1;transform:translateY(0);}
 .project-card::before{
@@ -156,9 +158,24 @@ html,body{
   transition:transform 1s ease-out;
 }
 .project-card.visible::before{transform:translateX(100%);}
-.project-card h3{font-size:1.2rem;margin-bottom:0.6rem;text-shadow:0 0 8px rgba(255,255,255,0.5);}
-.project-card p{font-family:'Roboto Mono',monospace;color:rgba(255,255,255,0.75);font-size:0.9rem;}
-.project-card:hover{background:rgba(255,255,255,0.15);transform:translateY(-6px) scale(1.03);box-shadow:0 0 25px rgba(255,255,255,0.3);}
+.project-card h3{
+  font-size:1.2rem;
+  margin-bottom:0.6rem;
+  color:#fff; 
+  text-shadow:none; 
+  text-decoration:none; /* désoulignement du titre */
+}
+.project-card p{
+  font-family:'Roboto Mono',monospace;
+  color:rgba(255,255,255,0.75);
+  font-size:0.9rem;
+  text-decoration:none; /* désoulignement du texte */
+}
+.project-card:hover{
+  background:rgba(255,255,255,0.15);
+  transform:translateY(-6px) scale(1.03);
+  box-shadow:0 0 25px rgba(255,255,255,0.3);
+}
 
 /* === Compétences === */
 .skills-grid {
@@ -206,44 +223,6 @@ footer{margin-top:5rem;display:flex;flex-direction:column;align-items:center;jus
 .socials a:hover{background:rgba(255,255,255,0.5);transform:scale(1.1);box-shadow:0 0 25px rgba(255,255,255,0.5);}
 .socials a i{color:#fff;font-size:1.3rem;filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));}
 footer p{color:rgba(255,255,255,0.6);font-family:'Roboto Mono',monospace;font-size:.85rem;}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 2rem;
-  width: 85%;
-  max-width: 900px;
-  margin-top: 2.5rem;
-}
-.skill-item {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 1.8rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: #fff;
-  box-shadow: 0 0 12px rgba(255,255,255,0.05);
-}
-.skill-item:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 0 25px rgba(255,255,255,0.3);
-}
-.skill-item i {
-  font-size: 2.8rem;
-  margin-bottom: 0.9rem;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.2));
-}
-.skill-item h3 {
-  font-size: 1rem;
-  color: #fff;
-  font-family: 'Roboto Mono', monospace;
-}
-
 </style>
 </head>
 
@@ -253,7 +232,6 @@ footer p{color:rgba(255,255,255,0.6);font-family:'Roboto Mono',monospace;font-si
 
 <section id="intro">
   <div class="intro-header">
-    <!-- 👇 Mets ici le lien de ta photo -->
     <img src="C:\Users\boimi\Downloads\photo1.jpg" alt="Photo de Cédric Boimin">
     <h1>CÉDRIC BOIMIN — DATA & IA</h1>
   </div>
@@ -267,12 +245,13 @@ footer p{color:rgba(255,255,255,0.6);font-family:'Roboto Mono',monospace;font-si
 
 <section id="projets" class="section">
   <h2>Mes Projets</h2>
-  <p>Découvrez mes réalisations en analyse de données</p>
+  <p>Découvrez mes réalisations en analyse de données et développement.</p>
   <div class="projects-grid" id="projectsGrid"></div>
 </section>
 
 <section id="competences" class="section">
   <h2>Outils et environnements de travail</h2>
+  <p>Les outils et technologies que j'apprends à maîtriser</p>
 
   <div class="skills-grid">
     <a href="#" class="skill-item"><i class="fa-solid fa-file-excel" style="color:#217346;"></i><h3>Excel</h3></a>
@@ -285,7 +264,6 @@ footer p{color:rgba(255,255,255,0.6);font-family:'Roboto Mono',monospace;font-si
     <a href="#" class="skill-item"><i class="fa-brands fa-github" style="color:#ffffff;"></i><h3>Git/GitHub</h3></a>
   </div>
 </section>
-
 
 <section id="contact" class="section">
   <h2>Contact</h2>
@@ -301,102 +279,65 @@ footer p{color:rgba(255,255,255,0.6);font-family:'Roboto Mono',monospace;font-si
 </section>
 
 <script>
-  // === Fond 3D ===
   const bg = document.getElementById("background3d");
   for (let i = 0; i < 35; i++) {
     const f = document.createElement("div");
     f.className = "prism-face";
     f.style.left = Math.random() * 100 + "%";
     f.style.top = Math.random() * 100 + "%";
-    f.style.transform = `translate3d(${(Math.random() - 0.5) * 500}px, 
-                                     ${(Math.random() - 0.5) * 500}px, 
-                                     ${(Math.random() - 0.5) * 500}px)
-                                     rotateX(${Math.random() * 360}deg) 
-                                     rotateY(${Math.random() * 360}deg)`;
+    f.style.transform = `translate3d(${(Math.random() - 0.5) * 500}px, ${(Math.random() - 0.5) * 500}px, ${(Math.random() - 0.5) * 500}px)
+                         rotateX(${Math.random() * 360}deg) rotateY(${Math.random() * 360}deg)`;
     bg.appendChild(f);
   }
+
   document.addEventListener("mousemove", e => {
     const x = (e.clientX / window.innerWidth - 0.5) * 20;
     const y = (e.clientY / window.innerHeight - 0.5) * 20;
     bg.style.transform = `rotateX(${y}deg) rotateY(${-x}deg)`;
   });
-  
-  // === Apparition + disparition des sections ===
+
   const sections = document.querySelectorAll(".section");
   const sectionObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      } else {
-        entry.target.classList.remove("visible"); // 👈 réactive le reversal
-      }
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+      else entry.target.classList.remove("visible");
     });
   }, { threshold: 0.25 });
   sections.forEach(s => sectionObserver.observe(s));
-  
-  // === Apparition + disparition des cartes projets ===
+
   const projectObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      } else {
-        entry.target.classList.remove("visible"); // 👈 aussi réversible
-      }
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+      else entry.target.classList.remove("visible");
     });
   }, { threshold: 0.25 });
-  
+
   const projectsGrid = document.getElementById("projectsGrid");
-
   const projectCards = [
-  {
-    title: "Dashboard Power BI",
-    desc: "Visualisation des ventes et KPIs dynamiques.",
-    link: "https://www.notion.so/R-sum-du-projet-2-248912d9181780d8a114c30f631693ea?source=copy_link"
-  },
-  {
-    title: "Data Warehouse SQL",
-    desc: "Entrepôt de données e-commerce structuré et automatisé.",
-    link: "https://github.com/bycedlanalsyt/projet_data_warehouse_ecommerce"
-  },
-  {
-    title: "Analyse Python",
-    desc: "Exploration et nettoyage de données avec Pandas & Matplotlib.",
-    link: "https://github.com/bycedlanalsyt/Movie-correlation-project"
-  },
-  {
-    title: "Machine Learning Sport",
-    desc: "Prédiction des résultats de matchs de Ligue 1.",
-    link: "https://github.com/bycedlanalsyt/ligue1_pr-dictions"
-  },
-  {
-    title: "Dashboard RH Excel",
-    desc: "Tableau de bord interactif des indicateurs RH.",
-    link: "https://www.notion.so/R-sum-du-projet-1-248912d9181780769f4efbe2c88fea34?source=copy_link"
-  },
-  {
-    title: "Reconnaissance Vocale ML",
-    desc: "Traitement audio multilingue avec Whisper et Common Voice.",
-    link: "https://github.com/bycedlanalsyt/voice_training"
-  }
-];
+    { title: "Dashboard Power BI", desc: "Visualisation des ventes et KPIs dynamiques.", link: "https://www.notion.so/R-sum-du-projet-2-248912d9181780d8a114c30f631693ea?source=copy_link" },
+    { title: "Data Warehouse SQL", desc: "Entrepôt de données e-commerce structuré et automatisé.", link: "https://github.com/bycedlanalsyt/projet_data_warehouse_ecommerce" },
+    { title: "Analyse Python", desc: "Exploration et nettoyage de données avec Pandas & Matplotlib.", link: "https://github.com/bycedlanalsyt/Movie-correlation-project" },
+    { title: "Machine Learning Sport", desc: "Prédiction des résultats de matchs de Ligue 1.", link: "https://github.com/bycedlanalsyt/ligue1_pr-dictions" },
+    { title: "Dashboard RH Excel", desc: "Tableau de bord interactif des indicateurs RH.", link: "https://www.notion.so/R-sum-du-projet-1-248912d9181780769f4efbe2c88fea34?source=copy_link" },
+    { title: "Reconnaissance Vocale ML", desc: "Traitement audio multilingue avec Whisper et Common Voice.", link: "https://github.com/bycedlanalsyt/voice_training" }
+  ];
 
-projectsGrid.innerHTML = projectCards.map(proj => `
-  <a href="${proj.link}" target="_blank" class="project-card">
-    <h3>${proj.title}</h3>
-    <p>${proj.desc}</p>
-  </a>
-`).join("");
-  
+  projectsGrid.innerHTML = projectCards.map(proj => `
+    <a href="${proj.link}" target="_blank" class="project-card">
+      <h3>${proj.title}</h3>
+      <p>${proj.desc}</p>
+    </a>
+  `).join("");
+
   document.querySelectorAll(".project-card").forEach(card => projectObserver.observe(card));
-  
-  // === Navigation fluide ===
+
   document.querySelectorAll(".nav-buttons button").forEach(btn => {
     btn.addEventListener("click", () => {
       const target = document.getElementById(btn.dataset.target);
       if (target) target.scrollIntoView({ behavior: "smooth" });
     });
   });
-  </script>
+</script>
 
 </body>
 </html>
